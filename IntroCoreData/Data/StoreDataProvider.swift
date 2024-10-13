@@ -8,7 +8,7 @@ class StoreDataProvider  {
     // Si crearamos varias instancias, crearíamos más contextos y hasta que no se guardara en base de datos la información
     // Las partes de la app que usan las otras instancias no se enteraría de esos cambios.
     
-    static var shared: StoreDataProvider = .init() //Se usa el patron singleton para realizar una única instancia del StoreDataProvider y poder usarla en toda la aplicación Es quien nos va a permitir acceder a la base de datos, realizar las conexiones, acceer a los registros, etc.
+    static var shared: StoreDataProvider = .init() //Se usa el patron singleton para realizar una única instancia del StoreDataProvider y poder usarla en toda la aplicación. Es quien nos va a permitir acceder a la base de datos, realizar las conexiones, acceer a los registros, etc.
     
     private let store: NSPersistentContainer //donde guardamos toda la información de nuestra aplicación.
     private var context: NSManagedObjectContext { //Lo usamos para realizar acciones con la información, como añadir o cambiar datos.
@@ -60,18 +60,18 @@ extension StoreDataProvider {
         if let bootCamp {
             keecodder.bootcamp = bootCamp
         }
-        save()
+        save() //guardamos los cambios en el contexto
     }
     
-    // Recupera todos los registros de la entidad MOKeepcoder de la BBDD
-    func fetchKeepCoders() -> [MOKeepcoder]? {
+    // Recupera todos los registros de la entidad MOKeepcoder de la BBDD mediante el método fetchRequest
+    func fetchKeepCoders() -> [MOKeepcoder]? { //devuelve un array de MOKeepcoder
         let request = MOKeepcoder.fetchRequest()
         return try? context.fetch(request)
     }
     
-    // Elimina de la base de datos el registro que recibe
+    // Elimina de la BBDD el registro que recibe
     func delete(keepcoder: MOKeepcoder) {
         context.delete(keepcoder)
-        save()
+        save() //guardamos los cambios en el contexto
     }
 }
