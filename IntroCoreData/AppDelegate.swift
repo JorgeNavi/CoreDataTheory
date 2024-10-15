@@ -1,9 +1,3 @@
-//
-//  AppDelegate.swift
-//  IntroCoreData
-//
-//  Created by Pedro on 10/10/24.
-//
 
 import UIKit
 

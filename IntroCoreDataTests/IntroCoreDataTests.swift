@@ -1,9 +1,3 @@
-//
-//  IntroCoreDataTests.swift
-//  IntroCoreDataTests
-//
-//  Created by Pedro on 10/10/24.
-//
 
 import XCTest
 @testable import IntroCoreData

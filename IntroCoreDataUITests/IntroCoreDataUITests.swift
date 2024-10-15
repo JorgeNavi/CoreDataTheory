@@ -1,9 +1,3 @@
-//
-//  IntroCoreDataUITests.swift
-//  IntroCoreDataUITests
-//
-//  Created by Pedro on 10/10/24.
-//
 
 import XCTest
 

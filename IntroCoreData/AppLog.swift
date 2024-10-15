@@ -1,9 +1,4 @@
-//
-//  AppLog.swift
-//  IntroCoreData
-//
-//  Created by Pedro on 10/10/24.
-//
+
 import Foundation
 import OSLog
 import UIKit

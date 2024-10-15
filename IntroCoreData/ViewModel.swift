@@ -48,4 +48,26 @@ class ViewModel {
         }
         return keepcoders[index]
     }
+    
+    //nos aseguramos de que tenemos el objeto a borrar y lo borramos
+    func deleteKeepCoder(at index: Int) {
+        guard let keepCoder = keepCoder(at: index) else { //Nos aseguramos de que tenemos un keepcoder apoyandonos en la funcion func keepCoder(at index: Int)
+            return //si no tenemos, return
+        }
+        storeProvider.delete(keepcoder: keepCoder) //si lo tenemos, llamamos a storeProvider y que elimine ese registro
+    }
+    
+    /*
+     El flujo del borrado con el gesto es el siguiente:
+     
+     1- Hago el gesto, llamo a la función deleteKeepCoder del viewModel, que realmente lo que borra es de la BBDD
+     2- Esa acción provoca que se llame en el viewModel a observer = NotificationCenter.default.addObserver(forName: NSManagedObjectContext.didSaveObjectsNotification, object: nil, queue: .main) {[weak self] _ in
+            , que es el observer que está escuchando que se producen cambios en el contexto
+            y self?.loadData() actualiza la vista
+     
+     es decir, estamos eliminando directamente en la BBDD, la notificación nos avisa y se actualiza la vista
+
+     */
+    
+  
 }
